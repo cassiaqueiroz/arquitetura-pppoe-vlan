@@ -1,10 +1,10 @@
 # Arquitetura PPPoE/VLAN - Documentação Interativa
 
-## 📋 Descrição
+## Descrição
 
 Documentação técnica interativa que demonstra o fluxo completo de autenticação PPPoE com segmentação VLAN em redes de telecomunicações. O projeto apresenta de forma visual e educativa como funciona a jornada desde o login/senha do cliente até o estabelecimento da conexão com a internet.
 
-## 🚀 Funcionalidades
+## Funcionalidades
 
 - **Diagrama Interativo**: Visualização passo a passo do processo de autenticação
 - **Animações Controladas**: Sistema de play/pause/reset para acompanhar o fluxo
@@ -14,7 +14,7 @@ Documentação técnica interativa que demonstra o fluxo completo de autenticaç
 - **Tooltips Informativos**: Explicações contextuais ao passar o mouse
 - **Atalhos de Teclado**: Navegação rápida (Espaço, R, I)
 
-## 🛠️ Tecnologias Utilizadas
+## Tecnologias Utilizadas
 
 - **HTML5**: Estrutura semântica e acessível
 - **CSS3**: Estilização moderna com gradientes, animações e flexbox/grid
@@ -22,16 +22,16 @@ Documentação técnica interativa que demonstra o fluxo completo de autenticaç
 - **Font Awesome**: Ícones vetoriais
 - **Google Fonts**: Tipografia (Inter e JetBrains Mono)
 
-## 📁 Estrutura do Projeto
+## Estrutura do Projeto
 
-```
+```text
 arquitetura-linca/
 ├── index.htm          # Página principal
 ├── styles.css         # Estilos CSS
 └── README.md          # Documentação
 ```
 
-## 🎯 Componentes Explicados
+## Componentes Explicados
 
 ### Fluxo PPPoE/VLAN
 
@@ -52,7 +52,7 @@ arquitetura-linca/
 - **PPPoE**: Point-to-Point Protocol over Ethernet
 - **GPON**: Gigabit Passive Optical Network
 
-## 🎨 Características do Design
+## Características do Design
 
 - **Paleta Clean**: Tons frios e profissionais
 - **Animações Suaves**: Transições e efeitos de entrada
@@ -60,49 +60,47 @@ arquitetura-linca/
 - **Layout Adaptativo**: Grid responsivo para todos os dispositivos
 - **Acessibilidade**: Focus states e suporte a motion reduction
 
-## 📱 Responsividade
+## Responsividade
 
 O projeto foi desenvolvido com abordagem mobile-first:
+
 - **Desktop**: Layout completo com animações avançadas
 - **Tablet**: Adaptação de grid e reposicionamento de elementos
 - **Mobile**: Layout em coluna única com navegação otimizada
 
-## 🚀 Como Usar
+## Como Usar
 
 1. Abra o arquivo `index.htm` em qualquer navegador moderno
 2. Use os controles para navegar pela animação:
-   - ▶️ Play: Inicia a animação sequencial
-   - ⏸️ Pause: Pausa a animação
-   - 🔄 Reset: Reinicia o diagrama
-   - ℹ️ Info: Abre modal com informações técnicas
+   - Play: Inicia a animação sequencial
+   - Pause: Pausa a animação
+   - Reset: Reinicia o diagrama
+   - Info: Abre modal com informações técnicas
 3. Explore os tooltips passando o mouse sobre cada etapa
 4. Navegue pelas seções: Diagrama, Resumo Visual e Glossário
 
-## 🎹 Atalhos de Teclado
+## Atalhos de Teclado
 
 - **Espaço/Enter**: Reproduzir animação
 - **R**: Reiniciar diagrama
 - **I**: Abrir informações técnicas
 
-## 📊 Métricas do Sistema
+## Métricas do Sistema
 
 - **Tempo de Autenticação**: 2-5 segundos
 - **Etapas do Processo**: 6 principais
 - **Tecnologia**: GPON
 - **Segurança**: AAA (Authentication, Authorization, Accounting)
 
-## 🎓 Fins Educacionais
+## Fins Educacionais
 
 Este projeto foi desenvolvido para fins educacionais, visando:
+
 - Facilitar o entendimento de conceitos de redes
 - Demonstrar fluxos de autenticação em ISPs
 - Explicar tecnologias como GPON, PPPoE e VLAN
 - Servir como material de apoio para estudos de telecomunicações
 
-## 👨‍💻 Desenvolvedor
-
-**cassiaqueirozcodelab** - Documentação técnica especializada para educação em redes e telecomunicações.
-
 ---
 
-© 2025 Documentação desenvolvida por cassiaqueirozcodelab para fins educacionais
+© 2025 Documentação desenvolvida por cassiaqueirozcodelab
