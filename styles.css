@@ -1223,6 +1223,24 @@ body {
     margin: 0;
 }
 
+.footer-content a {
+    color: #90cdf4;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color var(--transition-fast);
+}
+
+.footer-content a:hover {
+    color: #63b3ed;
+    text-decoration: underline;
+}
+
+.footer-content a:focus {
+    outline: 2px solid #63b3ed;
+    outline-offset: 2px;
+    border-radius: 2px;
+}
+
 /* Responsividade para Glossário */
 @media (max-width: 768px) {
     .concepts-grid {
