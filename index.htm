@@ -1,683 +1,669 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arquitetura PPPoE/VLAN - Fluxo de Autenticação</title>
-    <meta name="description" content="Diagrama interativo do fluxo de autenticação PPPoE com segmentação VLAN - Da autenticação à conexão com a internet">
-    <meta name="keywords" content="PPPoE, VLAN, autenticação, rede, telecomunicações, fibra óptica">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-</head>
-<body>
-    <!-- Loading Screen -->
-    <div id="loading" class="loading-screen">
-        <div class="loader">
-            <i class="fas fa-network-wired"></i>
-            <p>Carregando diagrama...</p>
-        </div>
-    </div>
 
-    <!-- Progress Bar -->
-    <div class="progress-container">
-        <div class="progress-bar" id="progress-bar"></div>
-    </div>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Arquitetura PPPoE/VLAN - Fluxo de Autenticação</title>
+        <meta name="description"
+            content="Diagrama interativo do fluxo de autenticação PPPoE com segmentação VLAN - Da autenticação à conexão com a internet">
+        <meta name="keywords" content="PPPoE, VLAN, autenticação, rede, telecomunicações, fibra óptica">
+        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    </head>
 
-    <header class="header">
-        <div class="header-content">
-            <h1>
-                <i class="fas fa-project-diagram"></i>
-                Arquitetura PPPoE/VLAN
-            </h1>
-            <p class="subtitle">Fluxo completo de autenticação e conexão à internet</p>
-            <div class="header-stats">
-                <span class="stat">
-                    <i class="fas fa-layer-group"></i>
-                    6 Etapas
-                </span>
-                <span class="stat">
-                    <i class="fas fa-clock"></i>
-                    ~2-5 segundos
-                </span>
-                <span class="stat">
-                    <i class="fas fa-shield-alt"></i>
-                    Seguro
-                </span>
+    <body>
+        <!-- Loading Screen -->
+        <div id="loading" class="loading-screen">
+            <div class="loader">
+                <i class="fas fa-network-wired"></i>
+                <p>Carregando diagrama...</p>
             </div>
         </div>
-    </header>
 
-    <!-- Controls -->
-    <div class="controls">
-        <button id="play-btn" class="control-btn" title="Reproduzir animação">
-            <i class="fas fa-play"></i>
-        </button>
-        <button id="pause-btn" class="control-btn" title="Pausar">
-            <i class="fas fa-pause"></i>
-        </button>
-        <button id="reset-btn" class="control-btn" title="Reiniciar">
-            <i class="fas fa-redo"></i>
-        </button>
-        <button id="info-btn" class="control-btn" title="Informações técnicas">
-            <i class="fas fa-info-circle"></i>
-        </button>
-    </div>
+        <!-- Progress Bar -->
+        <div class="progress-container">
+            <div class="progress-bar" id="progress-bar"></div>
+        </div>
 
-    <div class="diagram-container" id="diagram">
-
-        <div class="step client-device" data-step="1" data-delay="0">
-            <div class="step-header">
-                <span class="step-number">1</span>
-                <i class="fas fa-user-circle icon"></i>
-            </div>
-            <div class="step-content">
-                <h2>Roteador Cliente</h2>
-                <p>Inicia descoberta PPPoE com credenciais configuradas</p>
-                <div class="tech-details">
-                    <span class="tech-tag">PPPoE Discovery</span>
-                    <span class="tech-tag">PADI</span>
+        <header class="header">
+            <div class="header-content">
+                <h1>
+                    <i class="fas fa-project-diagram"></i>
+                    Arquitetura PPPoE/VLAN
+                </h1>
+                <p class="subtitle">Fluxo completo de autenticação e conexão à internet</p>
+                <div class="header-stats">
+                    <span class="stat">
+                        <i class="fas fa-layer-group"></i>
+                        6 Etapas
+                    </span>
+                    <span class="stat">
+                        <i class="fas fa-clock"></i>
+                        ~2-5 segundos
+                    </span>
+                    <span class="stat">
+                        <i class="fas fa-shield-alt"></i>
+                        Seguro
+                    </span>
                 </div>
             </div>
-            <div class="tooltip">
-                <strong>PPPoE Discovery:</strong><br>
-                O roteador cliente envia um pacote PADI (PPPoE Active Discovery Initiation) 
-                para descobrir servidores PPPoE disponíveis na rede.
-            </div>
-        </div>
+        </header>
 
-        <div class="arrow down" data-step="2" data-delay="800"></div>
+        <div class="diagram-container" id="diagram">
 
-        <div class="step vlan-tagging" data-step="2" data-delay="1000">
-            <div class="step-header">
-                <span class="step-number">2</span>
-                <i class="fas fa-tag icon vlan-icon"></i>
-            </div>
-            <div class="step-content">
-                <h2>Tagging VLAN</h2>
-                <p>Cada quadro Ethernet recebe uma etiqueta VLAN ID única para isolamento e identificação do serviço específico</p>
-                <div class="tech-details">
-                    <span class="tech-tag vlan">VLAN 100</span>
-                    <span class="tech-tag">802.1Q</span>
+            <div class="step client-device" data-step="1" data-delay="0">
+                <div class="step-header">
+                    <span class="step-number">1</span>
+                    <i class="fas fa-user-circle icon"></i>
+                </div>
+                <div class="step-content">
+                    <h2>Roteador Cliente</h2>
+                    <p>Inicia descoberta PPPoE com credenciais configuradas</p>
+                    <div class="tech-details">
+                        <span class="tech-tag">PPPoE Discovery</span>
+                        <span class="tech-tag">PADI</span>
+                    </div>
+                </div>
+                <div class="tooltip">
+                    <strong>PPPoE Discovery:</strong><br>
+                    O roteador cliente envia um pacote PADI (PPPoE Active Discovery Initiation)
+                    para descobrir servidores PPPoE disponíveis na rede.
                 </div>
             </div>
-            <div class="tooltip">
-                <strong>VLAN Tagging (IEEE 802.1Q):</strong><br>
-                Cada pacote recebe uma "etiqueta" de 4 bytes contendo a VLAN ID (ex: 100). 
-                Isso permite que múltiplos clientes compartilhem a mesma infraestrutura física 
-                mantendo o tráfego isolado e identificado por serviço/cliente.
-            </div>
-        </div>
 
-        <div class="arrow down" data-step="3" data-delay="1800"></div>
+            <div class="arrow down" data-step="2" data-delay="800"></div>
 
-        <div class="step olt" data-step="3" data-delay="2000">
-            <div class="step-header">
-                <span class="step-number">3</span>
-                <i class="fas fa-broadcast-tower icon"></i>
-            </div>
-            <div class="step-content">
-                <h2>OLT/PON</h2>
-                <p>Processa tráfego da fibra óptica</p>
-                <div class="tech-details">
-                    <span class="tech-tag">GPON</span>
-                    <span class="tech-tag">Fibra</span>
+            <div class="step vlan-tagging" data-step="2" data-delay="1000">
+                <div class="step-header">
+                    <span class="step-number">2</span>
+                    <i class="fas fa-tag icon vlan-icon"></i>
+                </div>
+                <div class="step-content">
+                    <h2>Tagging VLAN</h2>
+                    <p>Cada quadro Ethernet recebe uma etiqueta VLAN ID única para isolamento e identificação do serviço
+                        específico</p>
+                    <div class="tech-details">
+                        <span class="tech-tag vlan">VLAN 100</span>
+                        <span class="tech-tag">802.1Q</span>
+                    </div>
+                </div>
+                <div class="tooltip">
+                    <strong>VLAN Tagging (IEEE 802.1Q):</strong><br>
+                    Cada pacote recebe uma "etiqueta" de 4 bytes contendo a VLAN ID (ex: 100).
+                    Isso permite que múltiplos clientes compartilhem a mesma infraestrutura física
+                    mantendo o tráfego isolado e identificado por serviço/cliente.
                 </div>
             </div>
-            <div class="tooltip">
-                <strong>OLT (Optical Line Terminal):</strong><br>
-                Equipamento que gerencia múltiplas ONUs na rede PON, 
-                concentrando o tráfego de fibra óptica.
-            </div>
-        </div>
 
-        <div class="arrow right" data-step="4" data-delay="2800"></div>
+            <div class="arrow down" data-step="3" data-delay="1800"></div>
 
-        <div class="step pppoe-server brg" data-step="4" data-delay="3000">
-            <div class="step-header">
-                <span class="step-number">4</span>
-                <i class="fas fa-network-wired icon"></i>
-            </div>
-            <div class="step-content">
-                <h2>BRAS/BNG</h2>
-                <p>Servidor PPPoE processa autenticação</p>
-                <div class="tech-details">
-                    <span class="tech-tag">PPPoE Server</span>
-                    <span class="tech-tag">Session</span>
+            <div class="step olt" data-step="3" data-delay="2000">
+                <div class="step-header">
+                    <span class="step-number">3</span>
+                    <i class="fas fa-broadcast-tower icon"></i>
+                </div>
+                <div class="step-content">
+                    <h2>OLT/PON</h2>
+                    <p>Processa tráfego da fibra óptica</p>
+                    <div class="tech-details">
+                        <span class="tech-tag">GPON</span>
+                        <span class="tech-tag">Fibra</span>
+                    </div>
+                </div>
+                <div class="tooltip">
+                    <strong>OLT (Optical Line Terminal):</strong><br>
+                    Equipamento que gerencia múltiplas ONUs na rede PON,
+                    concentrando o tráfego de fibra óptica.
                 </div>
             </div>
-            <div class="tooltip">
-                <strong>BRAS/BNG:</strong><br>
-                Broadband Remote Access Server - equipamento que termina 
-                sessões PPPoE e gerencia o acesso dos assinantes.
-            </div>
-        </div>
-        
-        <div class="arrow right" data-step="5" data-delay="3800"></div>
 
-        <div class="step radius-server" data-step="5" data-delay="4000">
-            <div class="step-header">
-                <span class="step-number">5</span>
-                <i class="fas fa-shield-alt icon"></i>
-            </div>
-            <div class="step-content">
-                <h2>Servidor RADIUS</h2>
-                <p>Valida credenciais e políticas</p>
-                <div class="tech-details">
-                    <span class="tech-tag">AAA</span>
-                    <span class="tech-tag">Authentication</span>
+            <div class="arrow right" data-step="4" data-delay="2800"></div>
+
+            <div class="step pppoe-server brg" data-step="4" data-delay="3000">
+                <div class="step-header">
+                    <span class="step-number">4</span>
+                    <i class="fas fa-network-wired icon"></i>
+                </div>
+                <div class="step-content">
+                    <h2>BRAS/BNG</h2>
+                    <p>Servidor PPPoE processa autenticação</p>
+                    <div class="tech-details">
+                        <span class="tech-tag">PPPoE Server</span>
+                        <span class="tech-tag">Session</span>
+                    </div>
+                </div>
+                <div class="tooltip">
+                    <strong>BRAS/BNG:</strong><br>
+                    Broadband Remote Access Server - equipamento que termina
+                    sessões PPPoE e gerencia o acesso dos assinantes.
                 </div>
             </div>
-            <div class="tooltip">
-                <strong>RADIUS Server:</strong><br>
-                Sistema de autenticação, autorização e contabilização que verifica 
-                credenciais, status de pagamento e define políticas de acesso.
-            </div>
-        </div>
-        
-        <div class="arrow left success-arrow" data-step="6" data-delay="4800"></div>
 
-        <div class="step pppoe-server brg established" data-step="6" data-delay="5000">
-            <div class="step-header">
-                <span class="step-number">6</span>
-                <i class="fas fa-check-circle icon success-icon"></i>
-            </div>
-            <div class="step-content">
-                <h2>Conexão Ativa</h2>
-                <p>Sessão PPPoE estabelecida com sucesso</p>
-                <div class="status success">
-                    <i class="fas fa-wifi"></i>
-                    Online
+            <div class="arrow right" data-step="5" data-delay="3800"></div>
+
+            <div class="step radius-server" data-step="5" data-delay="4000">
+                <div class="step-header">
+                    <span class="step-number">5</span>
+                    <i class="fas fa-shield-alt icon"></i>
+                </div>
+                <div class="step-content">
+                    <h2>Servidor RADIUS</h2>
+                    <p>Valida credenciais e políticas</p>
+                    <div class="tech-details">
+                        <span class="tech-tag">AAA</span>
+                        <span class="tech-tag">Authentication</span>
+                    </div>
+                </div>
+                <div class="tooltip">
+                    <strong>RADIUS Server:</strong><br>
+                    Sistema de autenticação, autorização e contabilização que verifica
+                    credenciais, status de pagamento e define políticas de acesso.
                 </div>
             </div>
-            <div class="tooltip">
-                <strong>Conexão Estabelecida:</strong><br>
-                RADIUS retorna Access-Accept com configurações de IP, velocidade 
-                e políticas. Cliente agora tem acesso à internet.
+
+            <div class="arrow left success-arrow" data-step="6" data-delay="4800"></div>
+
+            <div class="step pppoe-server brg established" data-step="6" data-delay="5000">
+                <div class="step-header">
+                    <span class="step-number">6</span>
+                    <i class="fas fa-check-circle icon success-icon"></i>
+                </div>
+                <div class="step-content">
+                    <h2>Conexão Ativa</h2>
+                    <p>Sessão PPPoE estabelecida com sucesso</p>
+                    <div class="status success">
+                        <i class="fas fa-wifi"></i>
+                        Online
+                    </div>
+                </div>
+                <div class="tooltip">
+                    <strong>Conexão Estabelecida:</strong><br>
+                    RADIUS retorna Access-Accept com configurações de IP, velocidade
+                    e políticas. Cliente agora tem acesso à internet.
+                </div>
             </div>
+
         </div>
 
-    </div>
+        <!-- Resumo Visual Section -->
+        <section class="summary-section" id="summary">
+            <div class="summary-container">
+                <h2 class="summary-title">
+                    <i class="fas fa-chart-line"></i>
+                    Resumo do Fluxo PPPoE/VLAN
+                </h2>
 
-    <!-- Resumo Visual Section -->
-    <section class="summary-section" id="summary">
-        <div class="summary-container">
-            <h2 class="summary-title">
-                <i class="fas fa-chart-line"></i>
-                Resumo do Fluxo PPPoE/VLAN
-            </h2>
-            
-            <div class="summary-diagram">
-                <!-- Casa do Usuário -->
-                <div class="summary-zone user-zone">
-                    <h3><i class="fas fa-home"></i> Casa do Usuário</h3>
-                    <div class="zone-content">
-                        <div class="device">
-                            <i class="fas fa-router"></i>
-                            <span>Roteador Cliente</span>
-                            <small>PPPoE Discovery</small>
+                <div class="summary-diagram">
+                    <!-- Casa do Usuário -->
+                    <div class="summary-zone user-zone">
+                        <h3><i class="fas fa-home"></i> Casa do Usuário</h3>
+                        <div class="zone-content">
+                            <div class="device">
+                                <i class="fas fa-router"></i>
+                                <span>Roteador Cliente</span>
+                                <small>PPPoE Discovery</small>
+                            </div>
+                            <div class="device">
+                                <i class="fas fa-wifi"></i>
+                                <span>ONT/Modem</span>
+                                <small>VLAN Tagging</small>
+                            </div>
                         </div>
-                        <div class="device">
-                            <i class="fas fa-wifi"></i>
-                            <span>ONT/Modem</span>
-                            <small>VLAN Tagging</small>
+                    </div>
+
+                    <!-- Seta Conexão 1 -->
+                    <div class="summary-arrow">
+                        <div class="arrow-line"></div>
+                        <div class="arrow-label">Fibra Óptica<br>VLAN Tagged</div>
+                    </div>
+
+                    <!-- Rede de Distribuição -->
+                    <div class="summary-zone network-zone">
+                        <h3><i class="fas fa-city"></i> Rede de Distribuição</h3>
+                        <div class="zone-content">
+                            <div class="device">
+                                <i class="fas fa-broadcast-tower"></i>
+                                <span>OLT/PON</span>
+                                <small>GPON Network</small>
+                            </div>
+                            <div class="flow-indicator">
+                                <i class="fas fa-exchange-alt"></i>
+                                <span>Processamento VLAN</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Seta Conexão 2 -->
+                    <div class="summary-arrow">
+                        <div class="arrow-line"></div>
+                        <div class="arrow-label">Encaminhamento<br>para BRAS</div>
+                    </div>
+
+                    <!-- Central do Provedor -->
+                    <div class="summary-zone provider-zone">
+                        <h3><i class="fas fa-server"></i> Central do Provedor (ISP)</h3>
+                        <div class="zone-content">
+                            <div class="device">
+                                <i class="fas fa-network-wired"></i>
+                                <span>BRAS/BNG</span>
+                                <small>PPPoE Server</small>
+                            </div>
+                            <div class="device">
+                                <i class="fas fa-shield-alt"></i>
+                                <span>RADIUS</span>
+                                <small>Autenticação AAA</small>
+                            </div>
+                            <div class="device success-device">
+                                <i class="fas fa-globe"></i>
+                                <span>Internet</span>
+                                <small>Acesso Liberado</small>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Seta Conexão 1 -->
-                <div class="summary-arrow">
-                    <div class="arrow-line"></div>
-                    <div class="arrow-label">Fibra Óptica<br>VLAN Tagged</div>
+                <!-- Fluxo de Dados -->
+                <div class="data-flow">
+                    <h3><i class="fas fa-stream"></i> Fluxo de Dados</h3>
+                    <div class="flow-steps">
+                        <div class="flow-step">
+                            <div class="step-icon">1</div>
+                            <div class="step-content">
+                                <strong>Descoberta</strong>
+                                <p>Cliente inicia PPPoE Discovery (PADI)</p>
+                            </div>
+                        </div>
+                        <div class="flow-arrow">→</div>
+                        <div class="flow-step">
+                            <div class="step-icon">2</div>
+                            <div class="step-content">
+                                <strong>Etiquetagem VLAN</strong>
+                                <p>Cada pacote recebe uma "etiqueta" VLAN ID única (ex: 100) para identificação e
+                                    isolamento</p>
+                            </div>
+                        </div>
+                        <div class="flow-arrow">→</div>
+                        <div class="flow-step">
+                            <div class="step-icon">3</div>
+                            <div class="step-content">
+                                <strong>Processamento</strong>
+                                <p>OLT processa e encaminha</p>
+                            </div>
+                        </div>
+                        <div class="flow-arrow">→</div>
+                        <div class="flow-step">
+                            <div class="step-icon">4</div>
+                            <div class="step-content">
+                                <strong>Autenticação</strong>
+                                <p>BRAS consulta RADIUS</p>
+                            </div>
+                        </div>
+                        <div class="flow-arrow">→</div>
+                        <div class="flow-step success-step">
+                            <div class="step-icon">5</div>
+                            <div class="step-content">
+                                <strong>Conexão</strong>
+                                <p>Access-Accept → Internet</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
-                <!-- Rede de Distribuição -->
-                <div class="summary-zone network-zone">
-                    <h3><i class="fas fa-city"></i> Rede de Distribuição</h3>
-                    <div class="zone-content">
-                        <div class="device">
+                <!-- Protocolos e Tecnologias -->
+                <div class="tech-summary">
+                    <h3><i class="fas fa-cogs"></i> Tecnologias Envolvidas</h3>
+                    <div class="tech-grid">
+                        <div class="tech-item">
+                            <i class="fas fa-ethernet"></i>
+                            <span>PPPoE</span>
+                            <small>Point-to-Point Protocol over Ethernet</small>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fas fa-layer-group"></i>
+                            <span>VLAN</span>
+                            <small>Virtual LAN 802.1Q</small>
+                        </div>
+                        <div class="tech-item">
                             <i class="fas fa-broadcast-tower"></i>
-                            <span>OLT/PON</span>
-                            <small>GPON Network</small>
+                            <span>GPON</span>
+                            <small>Gigabit Passive Optical Network</small>
                         </div>
-                        <div class="flow-indicator">
-                            <i class="fas fa-exchange-alt"></i>
-                            <span>Processamento VLAN</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Seta Conexão 2 -->
-                <div class="summary-arrow">
-                    <div class="arrow-line"></div>
-                    <div class="arrow-label">Encaminhamento<br>para BRAS</div>
-                </div>
-
-                <!-- Central do Provedor -->
-                <div class="summary-zone provider-zone">
-                    <h3><i class="fas fa-server"></i> Central do Provedor (ISP)</h3>
-                    <div class="zone-content">
-                        <div class="device">
-                            <i class="fas fa-network-wired"></i>
-                            <span>BRAS/BNG</span>
-                            <small>PPPoE Server</small>
-                        </div>
-                        <div class="device">
+                        <div class="tech-item">
                             <i class="fas fa-shield-alt"></i>
                             <span>RADIUS</span>
-                            <small>Autenticação AAA</small>
+                            <small>Authentication, Authorization, Accounting</small>
                         </div>
-                        <div class="device success-device">
+                    </div>
+                </div>
+
+
+        </section>
+
+        <!-- Glossário Conceitual -->
+        <section class="glossary-section" id="glossary">
+            <div class="glossary-container">
+                <h2 class="glossary-title">
+                    <i class="fas fa-book-open"></i>
+                    Glossário
+                </h2>
+                <p class="glossary-subtitle">Definições detalhadas dos componentes da arquitetura PPPoE/VLAN</p>
+
+                <div class="concepts-grid">
+                    <div class="concept-card">
+                        <div class="concept-header">
+                            <i class="fas fa-broadcast-tower"></i>
+                            <h3>OLT</h3>
+                            <span class="concept-badge">Optical Line Terminal</span>
+                        </div>
+                        <div class="concept-content">
+                            <p><strong>Definição:</strong> Equipamento central que gerencia múltiplas ONUs em uma rede
+                                PON.</p>
+                            <p><strong>Função:</strong> Concentra o tráfego de fibra óptica e realiza conversão
+                                óptico-elétrica.</p>
+                            <p><strong>Localização:</strong> Central do provedor ou ponto de distribuição.</p>
+                            <div class="concept-specs">
+                                <span>Capacidade: até 128 ONUs</span>
+                                <span>Alcance: até 20km</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="concept-card">
+                        <div class="concept-header">
+                            <i class="fas fa-network-wired"></i>
+                            <h3>PON</h3>
+                            <span class="concept-badge">Passive Optical Network</span>
+                        </div>
+                        <div class="concept-content">
+                            <p><strong>Definição:</strong> Rede de fibra óptica passiva que compartilha uma única fibra
+                                entre múltiplos usuários.</p>
+                            <p><strong>Função:</strong> Permite distribuição eficiente de banda larga via fibra óptica.
+                            </p>
+                            <p><strong>Vantagem:</strong> Reduz custos de infraestrutura e manutenção.</p>
+                            <div class="concept-specs">
+                                <span>Topologia: Ponto-Multiponto</span>
+                                <span>Divisão: 1:32 ou 1:64</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="concept-card">
+                        <div class="concept-header">
+                            <i class="fas fa-layer-group"></i>
+                            <h3>VLAN</h3>
+                            <span class="concept-badge">Virtual Local Area Network</span>
+                        </div>
+                        <div class="concept-content">
+                            <p><strong>Definição:</strong> Tecnologia que adiciona uma "etiqueta" de 4 bytes aos quadros
+                                Ethernet, criando redes virtuais isoladas em uma mesma infraestrutura física.</p>
+                            <p><strong>Função:</strong> Permite que múltiplos clientes/serviços compartilhem
+                                equipamentos mantendo tráfego totalmente isolado e identificado.</p>
+                            <p><strong>Padrão:</strong> IEEE 802.1Q - cada VLAN ID funciona como uma "etiqueta de
+                                identificação" única.</p>
+                            <div class="concept-specs">
+                                <span>IDs: 1-4094</span>
+                                <span>Overhead: 4 bytes</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="concept-card">
+                        <div class="concept-header">
+                            <i class="fas fa-shield-alt"></i>
+                            <h3>RADIUS</h3>
+                            <span class="concept-badge">Remote Authentication Dial-In User Service</span>
+                        </div>
+                        <div class="concept-content">
+                            <p><strong>Definição:</strong> Protocolo de rede para autenticação, autorização e
+                                contabilização centralizadas.</p>
+                            <p><strong>Função:</strong> Valida credenciais, define políticas e monitora uso de recursos.
+                            </p>
+                            <p><strong>Aplicação:</strong> AAA (Authentication, Authorization, Accounting).</p>
+                            <div class="concept-specs">
+                                <span>Porta: 1812/1813</span>
+                                <span>Protocolo: UDP</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="concept-card">
+                        <div class="concept-header">
                             <i class="fas fa-globe"></i>
-                            <span>Internet</span>
-                            <small>Acesso Liberado</small>
+                            <h3>ISP</h3>
+                            <span class="concept-badge">Internet Service Provider</span>
+                        </div>
+                        <div class="concept-content">
+                            <p><strong>Definição:</strong> Empresa que fornece acesso à internet e serviços
+                                relacionados.</p>
+                            <p><strong>Função:</strong> Conecta usuários finais à internet global através de sua
+                                infraestrutura.</p>
+                            <p><strong>Serviços:</strong> Banda larga, hospedagem, email, DNS.</p>
+                            <div class="concept-specs">
+                                <span>Tier 1/2/3</span>
+                                <span>BGP/MPLS</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="concept-card">
+                        <div class="concept-header">
+                            <i class="fas fa-ethernet"></i>
+                            <h3>PPPoE</h3>
+                            <span class="concept-badge">Point-to-Point Protocol over Ethernet</span>
+                        </div>
+                        <div class="concept-content">
+                            <p><strong>Definição:</strong> Protocolo que encapsula PPP em quadros Ethernet.</p>
+                            <p><strong>Função:</strong> Permite autenticação e estabelecimento de sessões IP sobre
+                                Ethernet.</p>
+                            <p><strong>Processo:</strong> Discovery → Offer → Request → Session.</p>
+                            <div class="concept-specs">
+                                <span>RFC 2516</span>
+                                <span>MTU: 1492 bytes</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="concept-card">
+                        <div class="concept-header">
+                            <i class="fas fa-satellite-dish"></i>
+                            <h3>GPON</h3>
+                            <span class="concept-badge">Gigabit Passive Optical Network</span>
+                        </div>
+                        <div class="concept-content">
+                            <p><strong>Definição:</strong> Tecnologia PON que oferece velocidades de até 2.5 Gbps
+                                downstream.</p>
+                            <p><strong>Função:</strong> Transmissão de dados, voz e vídeo em alta velocidade via fibra.
+                            </p>
+                            <p><strong>Padrão:</strong> ITU-T G.984 para redes de acesso ópticas.</p>
+                            <div class="concept-specs">
+                                <span>Down: 2.488 Gbps</span>
+                                <span>Up: 1.244 Gbps</span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+        </section>
 
-            <!-- Fluxo de Dados -->
-            <div class="data-flow">
-                <h3><i class="fas fa-stream"></i> Fluxo de Dados</h3>
-                <div class="flow-steps">
-                    <div class="flow-step">
-                        <div class="step-icon">1</div>
-                        <div class="step-content">
-                            <strong>Descoberta</strong>
-                            <p>Cliente inicia PPPoE Discovery (PADI)</p>
-                        </div>
+        <!-- Info Modal -->
+        <div id="info-modal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2><i class="fas fa-info-circle"></i> Informações Técnicas</h2>
+                <div class="info-grid">
+                    <div class="info-card">
+                        <h3><i class="fas fa-ethernet"></i> PPPoE</h3>
+                        <p>Point-to-Point Protocol over Ethernet. Protocolo que permite autenticação e estabelecimento
+                            de sessões IP sobre redes Ethernet.</p>
                     </div>
-                    <div class="flow-arrow">→</div>
-                    <div class="flow-step">
-                        <div class="step-icon">2</div>
-                        <div class="step-content">
-                            <strong>Etiquetagem VLAN</strong>
-                            <p>Cada pacote recebe uma "etiqueta" VLAN ID única (ex: 100) para identificação e isolamento</p>
-                        </div>
+                    <div class="info-card">
+                        <h3><i class="fas fa-layer-group"></i> VLAN</h3>
+                        <p>Virtual Local Area Network. Segmentação lógica de rede que permite isolamento de tráfego em
+                            uma mesma infraestrutura física.</p>
                     </div>
-                    <div class="flow-arrow">→</div>
-                    <div class="flow-step">
-                        <div class="step-icon">3</div>
-                        <div class="step-content">
-                            <strong>Processamento</strong>
-                            <p>OLT processa e encaminha</p>
-                        </div>
+                    <div class="info-card">
+                        <h3><i class="fas fa-broadcast-tower"></i> PON/GPON</h3>
+                        <p>Passive/Gigabit Passive Optical Network. Tecnologia de fibra óptica que permite
+                            compartilhamento de uma única fibra entre múltiplos usuários.</p>
                     </div>
-                    <div class="flow-arrow">→</div>
-                    <div class="flow-step">
-                        <div class="step-icon">4</div>
-                        <div class="step-content">
-                            <strong>Autenticação</strong>
-                            <p>BRAS consulta RADIUS</p>
-                        </div>
-                    </div>
-                    <div class="flow-arrow">→</div>
-                    <div class="flow-step success-step">
-                        <div class="step-icon">5</div>
-                        <div class="step-content">
-                            <strong>Conexão</strong>
-                            <p>Access-Accept → Internet</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Protocolos e Tecnologias -->
-            <div class="tech-summary">
-                <h3><i class="fas fa-cogs"></i> Tecnologias Envolvidas</h3>
-                <div class="tech-grid">
-                    <div class="tech-item">
-                        <i class="fas fa-ethernet"></i>
-                        <span>PPPoE</span>
-                        <small>Point-to-Point Protocol over Ethernet</small>
-                    </div>
-                    <div class="tech-item">
-                        <i class="fas fa-layer-group"></i>
-                        <span>VLAN</span>
-                        <small>Virtual LAN 802.1Q</small>
-                    </div>
-                    <div class="tech-item">
-                        <i class="fas fa-broadcast-tower"></i>
-                        <span>GPON</span>
-                        <small>Gigabit Passive Optical Network</small>
-                    </div>
-                    <div class="tech-item">
-                        <i class="fas fa-shield-alt"></i>
-                        <span>RADIUS</span>
-                        <small>Authentication, Authorization, Accounting</small>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Timing e Métricas -->
-            <div class="metrics-summary">
-                <div class="metric">
-                    <i class="fas fa-clock"></i>
-                    <span class="metric-value">2-5s</span>
-                    <span class="metric-label">Tempo de Autenticação</span>
-                </div>
-                <div class="metric">
-                    <i class="fas fa-layer-group"></i>
-                    <span class="metric-value">6</span>
-                    <span class="metric-label">Etapas do Processo</span>
-                </div>
-                <div class="metric">
-                    <i class="fas fa-shield-check"></i>
-                    <span class="metric-value">AAA</span>
-                    <span class="metric-label">Segurança</span>
-                </div>
-                <div class="metric">
-                    <i class="fas fa-wifi"></i>
-                    <span class="metric-value">GPON</span>
-                    <span class="metric-label">Tecnologia</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Glossário Conceitual -->
-    <section class="glossary-section" id="glossary">
-        <div class="glossary-container">
-            <h2 class="glossary-title">
-                <i class="fas fa-book-open"></i>
-                Glossário de Conceitos
-            </h2>
-            <p class="glossary-subtitle">Definições detalhadas dos componentes da arquitetura PPPoE/VLAN</p>
-            
-            <div class="concepts-grid">
-                <div class="concept-card">
-                    <div class="concept-header">
-                        <i class="fas fa-broadcast-tower"></i>
-                        <h3>OLT</h3>
-                        <span class="concept-badge">Optical Line Terminal</span>
-                    </div>
-                    <div class="concept-content">
-                        <p><strong>Definição:</strong> Equipamento central que gerencia múltiplas ONUs em uma rede PON.</p>
-                        <p><strong>Função:</strong> Concentra o tráfego de fibra óptica e realiza conversão óptico-elétrica.</p>
-                        <p><strong>Localização:</strong> Central do provedor ou ponto de distribuição.</p>
-                        <div class="concept-specs">
-                            <span>Capacidade: até 128 ONUs</span>
-                            <span>Alcance: até 20km</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="concept-card">
-                    <div class="concept-header">
-                        <i class="fas fa-network-wired"></i>
-                        <h3>PON</h3>
-                        <span class="concept-badge">Passive Optical Network</span>
-                    </div>
-                    <div class="concept-content">
-                        <p><strong>Definição:</strong> Rede de fibra óptica passiva que compartilha uma única fibra entre múltiplos usuários.</p>
-                        <p><strong>Função:</strong> Permite distribuição eficiente de banda larga via fibra óptica.</p>
-                        <p><strong>Vantagem:</strong> Reduz custos de infraestrutura e manutenção.</p>
-                        <div class="concept-specs">
-                            <span>Topologia: Ponto-Multiponto</span>
-                            <span>Divisão: 1:32 ou 1:64</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="concept-card">
-                    <div class="concept-header">
-                        <i class="fas fa-layer-group"></i>
-                        <h3>VLAN</h3>
-                        <span class="concept-badge">Virtual Local Area Network</span>
-                    </div>
-                    <div class="concept-content">
-                        <p><strong>Definição:</strong> Tecnologia que adiciona uma "etiqueta" de 4 bytes aos quadros Ethernet, criando redes virtuais isoladas em uma mesma infraestrutura física.</p>
-                        <p><strong>Função:</strong> Permite que múltiplos clientes/serviços compartilhem equipamentos mantendo tráfego totalmente isolado e identificado.</p>
-                        <p><strong>Padrão:</strong> IEEE 802.1Q - cada VLAN ID funciona como uma "etiqueta de identificação" única.</p>
-                        <div class="concept-specs">
-                            <span>IDs: 1-4094</span>
-                            <span>Overhead: 4 bytes</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="concept-card">
-                    <div class="concept-header">
-                        <i class="fas fa-shield-alt"></i>
-                        <h3>RADIUS</h3>
-                        <span class="concept-badge">Remote Authentication Dial-In User Service</span>
-                    </div>
-                    <div class="concept-content">
-                        <p><strong>Definição:</strong> Protocolo de rede para autenticação, autorização e contabilização centralizadas.</p>
-                        <p><strong>Função:</strong> Valida credenciais, define políticas e monitora uso de recursos.</p>
-                        <p><strong>Aplicação:</strong> AAA (Authentication, Authorization, Accounting).</p>
-                        <div class="concept-specs">
-                            <span>Porta: 1812/1813</span>
-                            <span>Protocolo: UDP</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="concept-card">
-                    <div class="concept-header">
-                        <i class="fas fa-globe"></i>
-                        <h3>ISP</h3>
-                        <span class="concept-badge">Internet Service Provider</span>
-                    </div>
-                    <div class="concept-content">
-                        <p><strong>Definição:</strong> Empresa que fornece acesso à internet e serviços relacionados.</p>
-                        <p><strong>Função:</strong> Conecta usuários finais à internet global através de sua infraestrutura.</p>
-                        <p><strong>Serviços:</strong> Banda larga, hospedagem, email, DNS.</p>
-                        <div class="concept-specs">
-                            <span>Tier 1/2/3</span>
-                            <span>BGP/MPLS</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="concept-card">
-                    <div class="concept-header">
-                        <i class="fas fa-ethernet"></i>
-                        <h3>PPPoE</h3>
-                        <span class="concept-badge">Point-to-Point Protocol over Ethernet</span>
-                    </div>
-                    <div class="concept-content">
-                        <p><strong>Definição:</strong> Protocolo que encapsula PPP em quadros Ethernet.</p>
-                        <p><strong>Função:</strong> Permite autenticação e estabelecimento de sessões IP sobre Ethernet.</p>
-                        <p><strong>Processo:</strong> Discovery → Offer → Request → Session.</p>
-                        <div class="concept-specs">
-                            <span>RFC 2516</span>
-                            <span>MTU: 1492 bytes</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="concept-card">
-                    <div class="concept-header">
-                        <i class="fas fa-satellite-dish"></i>
-                        <h3>GPON</h3>
-                        <span class="concept-badge">Gigabit Passive Optical Network</span>
-                    </div>
-                    <div class="concept-content">
-                        <p><strong>Definição:</strong> Tecnologia PON que oferece velocidades de até 2.5 Gbps downstream.</p>
-                        <p><strong>Função:</strong> Transmissão de dados, voz e vídeo em alta velocidade via fibra.</p>
-                        <p><strong>Padrão:</strong> ITU-T G.984 para redes de acesso ópticas.</p>
-                        <div class="concept-specs">
-                            <span>Down: 2.488 Gbps</span>
-                            <span>Up: 1.244 Gbps</span>
-                        </div>
+                    <div class="info-card">
+                        <h3><i class="fas fa-shield-alt"></i> RADIUS</h3>
+                        <p>Remote Authentication Dial-In User Service. Protocolo de rede que fornece autenticação,
+                            autorização e contabilização centralizadas.</p>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
 
-    <!-- Info Modal -->
-    <div id="info-modal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2><i class="fas fa-info-circle"></i> Informações Técnicas</h2>
-            <div class="info-grid">
-                <div class="info-card">
-                    <h3><i class="fas fa-ethernet"></i> PPPoE</h3>
-                    <p>Point-to-Point Protocol over Ethernet. Protocolo que permite autenticação e estabelecimento de sessões IP sobre redes Ethernet.</p>
-                </div>
-                <div class="info-card">
-                    <h3><i class="fas fa-layer-group"></i> VLAN</h3>
-                    <p>Virtual Local Area Network. Segmentação lógica de rede que permite isolamento de tráfego em uma mesma infraestrutura física.</p>
-                </div>
-                <div class="info-card">
-                    <h3><i class="fas fa-broadcast-tower"></i> PON/GPON</h3>
-                    <p>Passive/Gigabit Passive Optical Network. Tecnologia de fibra óptica que permite compartilhamento de uma única fibra entre múltiplos usuários.</p>
-                </div>
-                <div class="info-card">
-                    <h3><i class="fas fa-shield-alt"></i> RADIUS</h3>
-                    <p>Remote Authentication Dial-In User Service. Protocolo de rede que fornece autenticação, autorização e contabilização centralizadas.</p>
-                </div>
+        <footer class="footer">
+            <div class="footer-content">
+                <p>&copy; 2025 Documentação desenvolvida por <a href="https://www.cassiaqueirozcodelab.com.br/"
+                        target="_blank" rel="noopener noreferrer">cassiaqueirozcodelab</a></p>
             </div>
-        </div>
-    </div>
+        </footer>
 
-    <footer class="footer">
-        <div class="footer-content">
-            <p>&copy; 2025 Documentação desenvolvida por <a href="https://www.cassiaqueirozcodelab.com.br/" target="_blank" rel="noopener noreferrer">cassiaqueirozcodelab</a></p>
-        </div>
-    </footer>
-
-    <script>
-        // Loading screen
-        window.addEventListener('load', function() {
-            setTimeout(() => {
-                document.getElementById('loading').style.opacity = '0';
+        <script>
+            // Loading screen
+            window.addEventListener('load', function () {
                 setTimeout(() => {
-                    document.getElementById('loading').style.display = 'none';
-                    startAnimation();
-                }, 300);
-            }, 1000);
-        });
-
-        // Animation system
-        let animationRunning = false;
-        let animationTimeout;
-
-        function startAnimation() {
-            if (animationRunning) return;
-            animationRunning = true;
-            
-            // Reset all elements
-            const elements = document.querySelectorAll('[data-step]');
-            elements.forEach(el => {
-                el.classList.remove('active', 'animated');
+                    document.getElementById('loading').style.opacity = '0';
+                    setTimeout(() => {
+                        document.getElementById('loading').style.display = 'none';
+                        startAnimation();
+                    }, 300);
+                }, 1000);
             });
 
-            // Update progress bar
-            updateProgress(0);
+            // Animation system
+            let animationRunning = false;
+            let animationTimeout;
 
-            // Animate each step
-            elements.forEach(el => {
-                const delay = parseInt(el.dataset.delay);
-                const step = parseInt(el.dataset.step);
-                
+            function startAnimation() {
+                if (animationRunning) return;
+                animationRunning = true;
+
+                // Reset all elements
+                const elements = document.querySelectorAll('[data-step]');
+                elements.forEach(el => {
+                    el.classList.remove('active', 'animated');
+                });
+
+                // Update progress bar
+                updateProgress(0);
+
+                // Animate each step
+                elements.forEach(el => {
+                    const delay = parseInt(el.dataset.delay);
+                    const step = parseInt(el.dataset.step);
+
+                    setTimeout(() => {
+                        el.classList.add('active', 'animated');
+                        updateProgress((step / 6) * 100);
+                    }, delay);
+                });
+
+                // Animation complete
                 setTimeout(() => {
-                    el.classList.add('active', 'animated');
-                    updateProgress((step / 6) * 100);
-                }, delay);
-            });
+                    animationRunning = false;
+                }, 6000);
+            }
 
-            // Animation complete
-            setTimeout(() => {
+            function updateProgress(percentage) {
+                document.getElementById('progress-bar').style.width = percentage + '%';
+            }
+
+            // Control buttons
+            document.getElementById('play-btn').addEventListener('click', startAnimation);
+
+            document.getElementById('pause-btn').addEventListener('click', () => {
                 animationRunning = false;
-            }, 6000);
-        }
-
-        function updateProgress(percentage) {
-            document.getElementById('progress-bar').style.width = percentage + '%';
-        }
-
-        // Control buttons
-        document.getElementById('play-btn').addEventListener('click', startAnimation);
-        
-        document.getElementById('pause-btn').addEventListener('click', () => {
-            animationRunning = false;
-            clearTimeout(animationTimeout);
-        });
-
-        document.getElementById('reset-btn').addEventListener('click', () => {
-            animationRunning = false;
-            clearTimeout(animationTimeout);
-            const elements = document.querySelectorAll('[data-step]');
-            elements.forEach(el => {
-                el.classList.remove('active', 'animated');
+                clearTimeout(animationTimeout);
             });
-            updateProgress(0);
-        });
 
-        // Info modal
-        const modal = document.getElementById('info-modal');
-        const infoBtn = document.getElementById('info-btn');
-        const closeBtn = document.getElementsByClassName('close')[0];
+            document.getElementById('reset-btn').addEventListener('click', () => {
+                animationRunning = false;
+                clearTimeout(animationTimeout);
+                const elements = document.querySelectorAll('[data-step]');
+                elements.forEach(el => {
+                    el.classList.remove('active', 'animated');
+                });
+                updateProgress(0);
+            });
 
-        infoBtn.addEventListener('click', () => {
-            modal.style.display = 'block';
-        });
+            // Info modal
+            const modal = document.getElementById('info-modal');
+            const infoBtn = document.getElementById('info-btn');
+            const closeBtn = document.getElementsByClassName('close')[0];
 
-        closeBtn.addEventListener('click', () => {
-            modal.style.display = 'none';
-        });
+            infoBtn.addEventListener('click', () => {
+                modal.style.display = 'block';
+            });
 
-        window.addEventListener('click', (e) => {
-            if (e.target === modal) {
+            closeBtn.addEventListener('click', () => {
                 modal.style.display = 'none';
-            }
-        });
-
-        // Tooltip system
-        const steps = document.querySelectorAll('.step');
-        steps.forEach(step => {
-            const tooltip = step.querySelector('.tooltip');
-            
-            step.addEventListener('mouseenter', () => {
-                tooltip.style.opacity = '1';
-                tooltip.style.visibility = 'visible';
-                tooltip.style.transform = 'translateY(-10px)';
             });
 
-            step.addEventListener('mouseleave', () => {
-                tooltip.style.opacity = '0';
-                tooltip.style.visibility = 'hidden';
-                tooltip.style.transform = 'translateY(0)';
-            });
-        });
-
-        // Keyboard shortcuts
-        document.addEventListener('keydown', (e) => {
-            switch(e.key) {
-                case ' ':
-                case 'Enter':
-                    e.preventDefault();
-                    startAnimation();
-                    break;
-                case 'r':
-                case 'R':
-                    document.getElementById('reset-btn').click();
-                    break;
-                case 'i':
-                case 'I':
-                    document.getElementById('info-btn').click();
-                    break;
-            }
-        });
-
-        // Smooth scrolling for footer links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
+            window.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.style.display = 'none';
                 }
             });
-        });
-    </script>
 
-</body>
+            // Tooltip system
+            const steps = document.querySelectorAll('.step');
+            steps.forEach(step => {
+                const tooltip = step.querySelector('.tooltip');
+
+                step.addEventListener('mouseenter', () => {
+                    tooltip.style.opacity = '1';
+                    tooltip.style.visibility = 'visible';
+                    tooltip.style.transform = 'translateY(-10px)';
+                });
+
+                step.addEventListener('mouseleave', () => {
+                    tooltip.style.opacity = '0';
+                    tooltip.style.visibility = 'hidden';
+                    tooltip.style.transform = 'translateY(0)';
+                });
+            });
+
+            // Keyboard shortcuts
+            document.addEventListener('keydown', (e) => {
+                switch (e.key) {
+                    case ' ':
+                    case 'Enter':
+                        e.preventDefault();
+                        startAnimation();
+                        break;
+                    case 'r':
+                    case 'R':
+                        document.getElementById('reset-btn').click();
+                        break;
+                    case 'i':
+                    case 'I':
+                        document.getElementById('info-btn').click();
+                        break;
+                }
+            });
+
+            // Smooth scrolling for footer links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        </script>
+
+    </body>
+
 </html>
