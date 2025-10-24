@@ -178,7 +178,7 @@ body {
 
 .header h1 i {
     margin-right: var(--spacing-sm);
-    color: var(--accent-color);
+    color: #e9ecef;
 }
 
 .subtitle {
@@ -512,27 +512,6 @@ body {
     content: '';
     position: absolute;
     border: 10px solid transparent;
-}
-
-/* Seta para baixo */
-.arrow.down {
-    height: 50px;
-    width: 0;
-    margin: var(--spacing-lg) auto;
-}
-
-.arrow.down::before {
-    width: 4px;
-    height: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-.arrow.down::after {
-    border-top: 12px solid var(--primary-color);
-    top: 100%;
-    left: 50%;
-    transform: translateX(-50%);
 }
 
 /* Seta para direita */
