@@ -845,14 +845,6 @@ body {
     margin: 0;
 }
 
-.flow-arrow {
-    font-size: 1.5rem;
-    color: var(--primary-color);
-    font-weight: bold;
-    margin: 0 var(--spacing-sm);
-    animation: arrowPulse 2s infinite;
-}
-
 @keyframes arrowPulse {
 
     0%,
@@ -949,11 +941,6 @@ body {
     .flow-steps {
         flex-direction: column;
         align-items: stretch;
-    }
-
-    .flow-arrow {
-        transform: rotate(90deg);
-        margin: var(--spacing-sm) 0;
     }
 
     .tech-grid {
