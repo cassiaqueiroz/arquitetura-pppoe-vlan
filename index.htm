@@ -96,16 +96,17 @@
             </div>
             <div class="step-content">
                 <h2>Tagging VLAN</h2>
-                <p>Tráfego recebe VLAN ID para isolamento</p>
+                <p>Cada quadro Ethernet recebe uma etiqueta VLAN ID única para isolamento e identificação do serviço específico</p>
                 <div class="tech-details">
                     <span class="tech-tag vlan">VLAN 100</span>
                     <span class="tech-tag">802.1Q</span>
                 </div>
             </div>
             <div class="tooltip">
-                <strong>VLAN Tagging:</strong><br>
-                O tráfego é marcado com uma VLAN ID específica (ex: 100) seguindo o padrão 
-                IEEE 802.1Q para segmentação e roteamento adequado.
+                <strong>VLAN Tagging (IEEE 802.1Q):</strong><br>
+                Cada pacote recebe uma "etiqueta" de 4 bytes contendo a VLAN ID (ex: 100). 
+                Isso permite que múltiplos clientes compartilhem a mesma infraestrutura física 
+                mantendo o tráfego isolado e identificado por serviço/cliente.
             </div>
         </div>
 
@@ -291,8 +292,8 @@
                     <div class="flow-step">
                         <div class="step-icon">2</div>
                         <div class="step-content">
-                            <strong>Encapsulamento</strong>
-                            <p>Tráfego recebe VLAN ID (802.1Q)</p>
+                            <strong>Etiquetagem VLAN</strong>
+                            <p>Cada pacote recebe uma "etiqueta" VLAN ID única (ex: 100) para identificação e isolamento</p>
                         </div>
                     </div>
                     <div class="flow-arrow">→</div>
@@ -426,9 +427,9 @@
                         <span class="concept-badge">Virtual Local Area Network</span>
                     </div>
                     <div class="concept-content">
-                        <p><strong>Definição:</strong> Segmentação lógica de rede que isola tráfego em uma mesma infraestrutura física.</p>
-                        <p><strong>Função:</strong> Permite isolamento, segurança e QoS por serviço/cliente.</p>
-                        <p><strong>Padrão:</strong> IEEE 802.1Q para tagging de quadros Ethernet.</p>
+                        <p><strong>Definição:</strong> Tecnologia que adiciona uma "etiqueta" de 4 bytes aos quadros Ethernet, criando redes virtuais isoladas em uma mesma infraestrutura física.</p>
+                        <p><strong>Função:</strong> Permite que múltiplos clientes/serviços compartilhem equipamentos mantendo tráfego totalmente isolado e identificado.</p>
+                        <p><strong>Padrão:</strong> IEEE 802.1Q - cada VLAN ID funciona como uma "etiqueta de identificação" única.</p>
                         <div class="concept-specs">
                             <span>IDs: 1-4094</span>
                             <span>Overhead: 4 bytes</span>

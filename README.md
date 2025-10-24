@@ -36,7 +36,7 @@ arquitetura-linca/
 ### Fluxo PPPoE/VLAN
 
 1. **Roteador Cliente**: Inicia PPPoE Discovery (PADI)
-2. **Tagging VLAN**: Tráfego recebe VLAN ID (802.1Q)
+2. **Tagging VLAN**: Cada quadro Ethernet recebe uma etiqueta VLAN ID única (ex: 100) seguindo o padrão IEEE 802.1Q, permitindo isolamento e identificação do tráfego por cliente/serviço
 3. **OLT/PON**: Processamento em rede GPON
 4. **BRAS/BNG**: Servidor PPPoE desencapsula e processa
 5. **RADIUS**: Autenticação AAA centralizada
@@ -46,7 +46,7 @@ arquitetura-linca/
 
 - **OLT**: Optical Line Terminal - Gerencia múltiplas ONUs
 - **PON**: Passive Optical Network - Rede de fibra passiva
-- **VLAN**: Virtual LAN - Segmentação lógica 802.1Q
+- **VLAN**: Virtual Local Area Network - Tecnologia de segmentação lógica que adiciona uma "etiqueta" de 4 bytes aos quadros Ethernet (IEEE 802.1Q), permitindo que múltiplos clientes/serviços compartilhem a mesma infraestrutura física mantendo isolamento total
 - **RADIUS**: Remote Authentication Dial-In User Service
 - **ISP**: Internet Service Provider
 - **PPPoE**: Point-to-Point Protocol over Ethernet
