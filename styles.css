@@ -910,16 +910,17 @@ body {
     }
 
     .summary-arrow {
-        transform: rotate(90deg);
-        margin: var(--spacing-md) 0;
+        transform: rotate(90);
+        margin: var(--spacing-lg) 0;
     }
 
     .arrow-line {
         width: 40px;
+        transform: rotate(90deg);
     }
 
     .arrow-label {
-        transform: rotate(-90deg);
+        transform: rotate(90deg);
         white-space: nowrap;
     }
 }
