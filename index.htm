@@ -1,302 +1,304 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arquitetura PPPoE/VLAN - Fluxo de Autenticação</title>
-    <meta name="description"
-        content="Diagrama interativo do fluxo de autenticação PPPoE com segmentação VLAN - Da autenticação à conexão com a internet">
-    <meta name="keywords" content="PPPoE, VLAN, autenticação, rede, telecomunicações, fibra óptica">
-    <link rel="stylesheet" href="styles.css">
-    <!-- Troca FontAwesome por Phosphor Icons (mais delicados) -->
-    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.0.3/src/regular/style.css">
-    <!-- Troca para fontes mais clean/minimalistas: Manrope e IBM Plex Mono -->
-    <link
-        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap"
-        rel="stylesheet">
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Arquitetura PPPoE/VLAN - Fluxo de Autenticação</title>
+        <meta name="description"
+            content="Diagrama interativo do fluxo de autenticação PPPoE com segmentação VLAN - Da autenticação à conexão com a internet">
+        <meta name="keywords" content="PPPoE, VLAN, autenticação, rede, telecomunicações, fibra óptica">
+        <link rel="stylesheet" href="styles.css">
+        <!-- Troca FontAwesome por Phosphor Icons (mais delicados) -->
+        <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.0.3/src/regular/style.css">
+        <!-- Troca para fontes mais clean/minimalistas: Manrope e IBM Plex Mono -->
+        <link
+            href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap"
+            rel="stylesheet">
+    </head>
 
-<body>
-    <!-- Loading Screen mais leve -->
-    <div id="loading" class="loading-screen">
-        <div class="loader">
-            <i class="ph ph-spinner-gap"></i>
-            <p>Carregando ...</p>
-        </div>
-    </div>
-
-    <!-- Progress Bar -->
-    <div class="progress-container">
-        <div class="progress-bar" id="progress-bar"></div>
-    </div>
-
-    <header class="header">
-        <div class="header-content">
-            <h1>
-                <!-- <i class="fas fa-project-diagram"></i> -->
-                Arquitetura PPPoE/VLAN
-            </h1>
-            <p class="subtitle">Fluxo completo de autenticação e conexão à internet</p>
-            <div class="header-stats">
-                <span class="stat">
-                    <i class="ph ph-stack"></i>
-                    6 Etapas
-                </span>
-                <span class="stat">
-                    <i class="ph ph-clock"></i>
-                    ~2-5 segundos
-                </span>
-                <span class="stat">
-                    <i class="ph ph-shield-check"></i>
-                    Seguro
-                </span>
+    <body>
+        <!-- Loading Screen mais leve -->
+        <div id="loading" class="loading-screen">
+            <div class="loader">
+                <i class="ph ph-spinner-gap"></i>
+                <p>Carregando ...</p>
             </div>
         </div>
-    </header>
 
-    <div class="diagram-container" id="diagram">
-        <div class="step client-device" data-step="1" data-delay="0">
-            <div class="step-header">
-                <span class="step-number">1</span>
-                <i class="ph ph-user-circle icon"></i>
-            </div>
-            <div class="step-content">
-                <h2>Roteador Cliente</h2>
-                <p>Inicia descoberta PPPoE com credenciais configuradas</p>
-                <div class="tech-details">
-                    <span class="tech-tag">PPPoE Discovery</span>
-                    <span class="tech-tag">PADI</span>
+        <!-- Progress Bar -->
+        <div class="progress-container">
+            <div class="progress-bar" id="progress-bar"></div>
+        </div>
+
+        <header class="header">
+            <div class="header-content">
+                <h1>
+                    <!-- <i class="fas fa-project-diagram"></i> -->
+                    Arquitetura PPPoE/VLAN
+                </h1>
+                <p class="subtitle">Fluxo completo de autenticação e conexão à internet</p>
+                <div class="header-stats">
+                    <span class="stat">
+                        <i class="ph ph-stack"></i>
+                        6 Etapas
+                    </span>
+                    <span class="stat">
+                        <i class="ph ph-clock"></i>
+                        ~2-5 segundos
+                    </span>
+                    <span class="stat">
+                        <i class="ph ph-shield-check"></i>
+                        Seguro
+                    </span>
                 </div>
             </div>
-            <div class="tooltip">
-                <strong>PPPoE Discovery:</strong><br>
-                O roteador cliente envia um pacote PADI (PPPoE Active Discovery Initiation)
-                para descobrir servidores PPPoE disponíveis na rede.
-            </div>
-        </div>
+        </header>
 
-        <div class="step vlan-tagging" data-step="2" data-delay="1000">
-            <div class="step-header">
-                <span class="step-number">2</span>
-                <i class="ph ph-tag icon vlan-icon"></i>
-            </div>
-            <div class="step-content">
-                <h2>Tagging VLAN</h2>
-                <p>Cada quadro Ethernet recebe uma etiqueta VLAN ID única para isolamento e identificação do serviço
-                    específico</p>
-                <div class="tech-details">
-                    <span class="tech-tag vlan">VLAN 100</span>
-                    <span class="tech-tag">802.1Q</span>
+        <div class="diagram-container" id="diagram">
+            <div class="step client-device" data-step="1" data-delay="0">
+                <div class="step-header">
+                    <span class="step-number">1</span>
+                    <i class="ph ph-user-circle icon"></i>
+                </div>
+                <div class="step-content">
+                    <h2>Roteador Cliente</h2>
+                    <p>Inicia descoberta PPPoE com credenciais configuradas</p>
+                    <div class="tech-details">
+                        <span class="tech-tag">PPPoE Discovery</span>
+                        <span class="tech-tag">PADI</span>
+                    </div>
+                </div>
+                <div class="tooltip">
+                    <strong>PPPoE Discovery:</strong><br>
+                    O roteador cliente envia um pacote PADI (PPPoE Active Discovery Initiation)
+                    para descobrir servidores PPPoE disponíveis na rede.
                 </div>
             </div>
-            <div class="tooltip">
-                <strong>VLAN Tagging (IEEE 802.1Q):</strong><br>
-                Cada pacote recebe uma "etiqueta" de 4 bytes contendo a VLAN ID (ex: 100).
-                Isso permite que múltiplos clientes compartilhem a mesma infraestrutura física
-                mantendo o tráfego isolado e identificado por serviço/cliente.
-            </div>
-        </div>
 
-        <div class="step olt" data-step="3" data-delay="2000">
-            <div class="step-header">
-                <span class="step-number">3</span>
-                <i class="ph ph-broadcast icon"></i>
-            </div>
-            <div class="step-content">
-                <h2>OLT/PON</h2>
-                <p>Processa tráfego da fibra óptica</p>
-                <div class="tech-details">
-                    <span class="tech-tag">GPON</span>
-                    <span class="tech-tag">Fibra</span>
+            <div class="step vlan-tagging" data-step="2" data-delay="1000">
+                <div class="step-header">
+                    <span class="step-number">2</span>
+                    <i class="ph ph-tag icon vlan-icon"></i>
+                </div>
+                <div class="step-content">
+                    <h2>Tagging VLAN</h2>
+                    <p>Cada quadro Ethernet recebe uma etiqueta VLAN ID única para isolamento e identificação do serviço
+                        específico</p>
+                    <div class="tech-details">
+                        <span class="tech-tag vlan">VLAN 100</span>
+                        <span class="tech-tag">802.1Q</span>
+                    </div>
+                </div>
+                <div class="tooltip">
+                    <strong>VLAN Tagging (IEEE 802.1Q):</strong><br>
+                    Cada pacote recebe uma "etiqueta" de 4 bytes contendo a VLAN ID (ex: 100).
+                    Isso permite que múltiplos clientes compartilhem a mesma infraestrutura física
+                    mantendo o tráfego isolado e identificado por serviço/cliente.
                 </div>
             </div>
-            <div class="tooltip">
-                <strong>OLT (Optical Line Terminal):</strong><br>
-                Equipamento que gerencia múltiplas ONUs na rede PON,
-                concentrando o tráfego de fibra óptica.
-            </div>
-        </div>
 
-        <div class="step pppoe-server brg" data-step="4" data-delay="3000">
-            <div class="step-header">
-                <span class="step-number">4</span>
-                <i class="ph ph-network icon"></i>
-            </div>
-            <div class="step-content">
-                <h2>BRAS/BNG</h2>
-                <p>Servidor PPPoE processa autenticação</p>
-                <div class="tech-details">
-                    <span class="tech-tag">PPPoE Server</span>
-                    <span class="tech-tag">Session</span>
+            <div class="step olt" data-step="3" data-delay="2000">
+                <div class="step-header">
+                    <span class="step-number">3</span>
+                    <!-- Corrija para ph-fiber-wireless, mas garanta que a versão do pacote Phosphor inclui esse ícone.
+                     Caso não apareça, troque para ph-fiber-optic, que existe e é visível. -->
+                    <i class="ph ph-share-network icon"></i>
+                </div>
+                <div class="step-content">
+                    <h2>OLT/PON</h2>
+                    <p>Processa tráfego da fibra óptica</p>
+                    <div class="tech-details">
+                        <span class="tech-tag">GPON</span>
+                        <span class="tech-tag">Fibra</span>
+                    </div>
+                </div>
+                <div class="tooltip">
+                    <strong>OLT (Optical Line Terminal):</strong><br>
+                    Equipamento que gerencia múltiplas ONUs na rede PON,
+                    concentrando o tráfego de fibra óptica.
                 </div>
             </div>
-            <div class="tooltip">
-                <strong>BRAS/BNG:</strong><br>
-                Broadband Remote Access Server - equipamento que termina
-                sessões PPPoE e gerencia o acesso dos assinantes.
-            </div>
-        </div>
 
-        <div class="step radius-server" data-step="5" data-delay="4000">
-            <div class="step-header">
-                <span class="step-number">5</span>
-                <i class="ph ph-shield-check icon"></i>
-            </div>
-            <div class="step-content">
-                <h2>Servidor RADIUS</h2>
-                <p>Valida credenciais e políticas</p>
-                <div class="tech-details">
-                    <span class="tech-tag">AAA</span>
-                    <span class="tech-tag">Authentication</span>
+            <div class="step pppoe-server brg" data-step="4" data-delay="3000">
+                <div class="step-header">
+                    <span class="step-number">4</span>
+                    <i class="ph ph-database icon"></i>
+                </div>
+                <div class="step-content">
+                    <h2>BRAS/BNG</h2>
+                    <p>Servidor PPPoE processa autenticação</p>
+                    <div class="tech-details">
+                        <span class="tech-tag">PPPoE Server</span>
+                        <span class="tech-tag">Session</span>
+                    </div>
+                </div>
+                <div class="tooltip">
+                    <strong>BRAS/BNG:</strong><br>
+                    Broadband Remote Access Server - equipamento que termina
+                    sessões PPPoE e gerencia o acesso dos assinantes.
                 </div>
             </div>
-            <div class="tooltip">
-                <strong>RADIUS Server:</strong><br>
-                Sistema de autenticação, autorização e contabilização que verifica
-                credenciais, status de pagamento e define políticas de acesso.
-            </div>
-        </div>
 
-        <div class="step pppoe-server brg established" data-step="6" data-delay="5000">
-            <div class="step-header">
-                <span class="step-number">6</span>
-                <i class="ph ph-check-circle icon success-icon"></i>
-            </div>
-            <div class="step-content">
-                <h2>Conexão Ativa</h2>
-                <p>Sessão PPPoE estabelecida com sucesso</p>
-                <div class="status success">
-                    <i class="ph ph-wifi-high"></i>
-                    Online
+            <div class="step radius-server" data-step="5" data-delay="4000">
+                <div class="step-header">
+                    <span class="step-number">5</span>
+                    <i class="ph ph-shield-check icon"></i>
+                </div>
+                <div class="step-content">
+                    <h2>Servidor RADIUS</h2>
+                    <p>Valida credenciais e políticas</p>
+                    <div class="tech-details">
+                        <span class="tech-tag">AAA</span>
+                        <span class="tech-tag">Authentication</span>
+                    </div>
+                </div>
+                <div class="tooltip">
+                    <strong>RADIUS Server:</strong><br>
+                    Sistema de autenticação, autorização e contabilização que verifica
+                    credenciais, status de pagamento e define políticas de acesso.
                 </div>
             </div>
-            <div class="tooltip">
-                <strong>Conexão Estabelecida:</strong><br>
-                RADIUS retorna Access-Accept com configurações de IP, velocidade
-                e políticas. Cliente agora tem acesso à internet.
+
+            <div class="step pppoe-server brg established" data-step="6" data-delay="5000">
+                <div class="step-header">
+                    <span class="step-number">6</span>
+                    <i class="ph ph-check-circle icon success-icon"></i>
+                </div>
+                <div class="step-content">
+                    <h2>Conexão Ativa</h2>
+                    <p>Sessão PPPoE estabelecida com sucesso</p>
+                    <div class="status success">
+                        <i class="ph ph-wifi-high"></i>
+                        Online
+                    </div>
+                </div>
+                <div class="tooltip">
+                    <strong>Conexão Estabelecida:</strong><br>
+                    RADIUS retorna Access-Accept com configurações de IP, velocidade
+                    e políticas. Cliente agora tem acesso à internet.
+                </div>
             </div>
         </div>
-    </div>
 
-    <!-- Resumo Visual Section -->
-    <section class="summary-section" id="summary">
-        <div class="summary-container">
-            <h2 class="summary-title">
-                Resumo do Fluxo PPPoE/VLAN
-            </h2>
-            <div class="summary-diagram">
-                <!-- Casa do Usuário -->
-                <div class="summary-zone user-zone">
-                    <h3><i class="ph ph-house"></i> Casa do Usuário</h3>
-                    <div class="zone-content">
-                        <div class="device">
-                            <i class="ph ph-router"></i>
-                            <span>Roteador Cliente</span>
-                            <small>PPPoE Discovery</small>
+        <!-- Resumo Visual Section -->
+        <section class="summary-section" id="summary">
+            <div class="summary-container">
+                <h2 class="summary-title">
+                    Resumo do Fluxo PPPoE/VLAN
+                </h2>
+                <div class="summary-diagram">
+                    <!-- Casa do Usuário -->
+                    <div class="summary-zone user-zone">
+                        <h3><i class="ph ph-house"></i> Casa do Usuário</h3>
+                        <div class="zone-content">
+                            <div class="device">
+                                <i class="ph ph-router"></i>
+                                <span>Roteador Cliente</span>
+                                <small>PPPoE Discovery</small>
+                            </div>
+                            <div class="device">
+                                <i class="ph ph-wifi-high"></i>
+                                <span>ONT/Modem</span>
+                                <small>VLAN Tagging</small>
+                            </div>
                         </div>
-                        <div class="device">
-                            <i class="ph ph-wifi-high"></i>
-                            <span>ONT/Modem</span>
-                            <small>VLAN Tagging</small>
+                    </div>
+
+                    <!-- Seta Conexão 1 -->
+                    <div class="summary-arrow">
+                        <div class="arrow-label">Fibra Óptica<br>VLAN Tagged</div><br><br>
+                        <div class="arrow-line"></div>
+
+                    </div>
+
+                    <!-- Rede de Distribuição -->
+                    <div class="summary-zone network-zone">
+                        <h3><i class="ph ph-share-network"></i> Rede de Distribuição</h3>
+                        <div class="zone-content">
+                            <div class="device">
+                                <i class="ph ph-share-network"></i>
+                                <span>OLT/PON</span>
+                                <small>GPON Network</small>
+                            </div>
+                            <div class="flow-indicator">
+                                <i class="ph ph-arrows-left-right"></i>
+                                <span>Processamento VLAN</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Seta Conexão 2 -->
+                    <div class="summary-arrow">
+                        <div class="arrow-label">Encaminha<br>para BRAS</div><br><br>
+                        <div class="arrow-line"></div>
+                    </div>
+
+                    <!-- Central do Provedor -->
+                    <div class="summary-zone provider-zone">
+                        <h3><i class="ph ph-server"></i> Central do Provedor (ISP)</h3>
+                        <div class="zone-content">
+                            <div class="device">
+                                <i class="ph ph-database"></i>
+                                <span>BRAS/BNG</span>
+                                <small>PPPoE Server</small>
+                            </div>
+                            <div class="device">
+                                <i class="ph ph-shield-check"></i>
+                                <span>RADIUS</span>
+                                <small>Autenticação AAA</small>
+                            </div>
+                            <div class="device success-device">
+                                <i class="ph ph-globe"></i>
+                                <span>Internet</span>
+                                <small>Acesso Liberado</small>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Seta Conexão 1 -->
-                <div class="summary-arrow">
-                    <div class="arrow-label">Fibra Óptica<br>VLAN Tagged</div><br><br>
-                    <div class="arrow-line"></div>
-
-                </div>
-
-                <!-- Rede de Distribuição -->
-                <div class="summary-zone network-zone">
-                    <h3><i class="ph ph-buildings"></i> Rede de Distribuição</h3>
-                    <div class="zone-content">
-                        <div class="device">
-                            <i class="ph ph-broadcast"></i>
-                            <span>OLT/PON</span>
-                            <small>GPON Network</small>
+                <!-- Fluxo de Dados -->
+                <div class="data-flow">
+                    <h3> Fluxo de Dados</h3>
+                    <div class="flow-steps">
+                        <div class="flow-step">
+                            <div class="step-icon">1</div>
+                            <div class="step-content">
+                                <strong>Descoberta</strong>
+                                <p>Cliente inicia PPPoE Discovery (PADI)</p>
+                            </div>
                         </div>
-                        <div class="flow-indicator">
-                            <i class="ph ph-arrows-left-right"></i>
-                            <span>Processamento VLAN</span>
+                        <div class="flow-step">
+                            <div class="step-icon">2</div>
+                            <div class="step-content">
+                                <strong>Etiquetagem VLAN</strong>
+                                <p>Cada pacote recebe uma "etiqueta" VLAN ID única (ex: 100) para identificação e
+                                    isolamento</p>
+                            </div>
                         </div>
-                    </div>
-                </div>
-
-                <!-- Seta Conexão 2 -->
-                <div class="summary-arrow">
-                    <div class="arrow-label">Encaminha<br>para BRAS</div><br><br>
-                    <div class="arrow-line"></div>
-                </div>
-
-                <!-- Central do Provedor -->
-                <div class="summary-zone provider-zone">
-                    <h3><i class="ph ph-server"></i> Central do Provedor (ISP)</h3>
-                    <div class="zone-content">
-                        <div class="device">
-                            <i class="ph ph-network"></i>
-                            <span>BRAS/BNG</span>
-                            <small>PPPoE Server</small>
+                        <div class="flow-step">
+                            <div class="step-icon">3</div>
+                            <div class="step-content">
+                                <strong>Processamento</strong>
+                                <p>OLT processa e encaminha</p>
+                            </div>
                         </div>
-                        <div class="device">
-                            <i class="ph ph-shield-check"></i>
-                            <span>RADIUS</span>
-                            <small>Autenticação AAA</small>
+                        <div class="flow-step">
+                            <div class="step-icon">4</div>
+                            <div class="step-content">
+                                <strong>Autenticação</strong>
+                                <p>BRAS consulta RADIUS</p>
+                            </div>
                         </div>
-                        <div class="device success-device">
-                            <i class="ph ph-globe"></i>
-                            <span>Internet</span>
-                            <small>Acesso Liberado</small>
+                        <div class="flow-step success-step">
+                            <div class="step-icon">5</div>
+                            <div class="step-content">
+                                <strong>Conexão</strong>
+                                <p>Access-Accept → Internet</p>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <!-- Fluxo de Dados -->
-            <div class="data-flow">
-                <h3> Fluxo de Dados</h3>
-                <div class="flow-steps">
-                    <div class="flow-step">
-                        <div class="step-icon">1</div>
-                        <div class="step-content">
-                            <strong>Descoberta</strong>
-                            <p>Cliente inicia PPPoE Discovery (PADI)</p>
-                        </div>
-                    </div>
-                    <div class="flow-step">
-                        <div class="step-icon">2</div>
-                        <div class="step-content">
-                            <strong>Etiquetagem VLAN</strong>
-                            <p>Cada pacote recebe uma "etiqueta" VLAN ID única (ex: 100) para identificação e
-                                isolamento</p>
-                        </div>
-                    </div>
-                    <div class="flow-step">
-                        <div class="step-icon">3</div>
-                        <div class="step-content">
-                            <strong>Processamento</strong>
-                            <p>OLT processa e encaminha</p>
-                        </div>
-                    </div>
-                    <div class="flow-step">
-                        <div class="step-icon">4</div>
-                        <div class="step-content">
-                            <strong>Autenticação</strong>
-                            <p>BRAS consulta RADIUS</p>
-                        </div>
-                    </div>
-                    <div class="flow-step success-step">
-                        <div class="step-icon">5</div>
-                        <div class="step-content">
-                            <strong>Conexão</strong>
-                            <p>Access-Accept → Internet</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
         </section>
 
@@ -330,7 +332,7 @@
 
                     <div class="concept-card">
                         <div class="concept-header">
-                            <i class="ph ph-network"></i>
+                            <i class="ph ph-graph"></i>
                             <h3>PON</h3>
                             <span class="concept-badge">Passive Optical Network</span>
                         </div>
@@ -349,7 +351,7 @@
 
                     <div class="concept-card">
                         <div class="concept-header">
-                            <i class="ph ph-stack"></i>
+                            <i class="ph ph-tag"></i>
                             <h3>VLAN</h3>
                             <span class="concept-badge">Virtual Local Area Network</span>
                         </div>
@@ -407,7 +409,7 @@
 
                     <div class="concept-card">
                         <div class="concept-header">
-                            <i class="ph ph-plug"></i>
+                            <i class="ph ph-user"></i>
                             <h3>PPPoE</h3>
                             <span class="concept-badge">Point-to-Point Protocol over Ethernet</span>
                         </div>
@@ -425,7 +427,8 @@
 
                     <div class="concept-card">
                         <div class="concept-header">
-                            <i class="ph ph-satellite"></i>
+                            <i class="ph ph-fast-forward-circle"></i>
+
                             <h3>GPON</h3>
                             <span class="concept-badge">Gigabit Passive Optical Network</span>
                         </div>
@@ -438,6 +441,25 @@
                             <div class="concept-specs">
                                 <span>Down: 2.488 Gbps</span>
                                 <span>Up: 1.244 Gbps</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="concept-card">
+                        <div class="concept-header">
+                            <i class="ph ph-database"></i>
+                            <h3>BRAS/BNG</h3>
+                            <span class="concept-badge">Broadband Remote Access Server</span>
+                        </div>
+                        <div class="concept-content">
+                            <p><strong>Definição:</strong> Equipamento que termina sessões PPPoE e gerencia o acesso
+                                dos assinantes.</p>
+                            <p><strong>Função:</strong> Agrega múltiplas sessões PPPoE e aplica políticas de
+                                QoS/velocidade.</p>
+                            <p><strong>Localização:</strong> Data center do provedor.</p>
+                            <div class="concept-specs">
+                                <span>Capacidade: até 10.000 sessões</span>
+                                <span>Protocolos: PPPoE, IP, VLAN</span>
                             </div>
                         </div>
                     </div>
@@ -591,6 +613,6 @@
             });
         </script>
 
-</body>
+    </body>
 
 </html>
