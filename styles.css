@@ -1,5 +1,6 @@
 /* Importação de fontes otimizadas */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&display=swap');
 
 /* Variáveis CSS aprimoradas */
 :root {
@@ -69,7 +70,7 @@ html {
 }
 
 body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-family: 'Manrope', 'Segoe UI', Arial, sans-serif;
     background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
     color: var(--text-primary);
     line-height: 1.6;
@@ -362,7 +363,7 @@ body {
     border-radius: var(--border-radius-sm);
     font-size: 0.75rem;
     font-weight: 500;
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'IBM Plex Mono', 'JetBrains Mono', monospace;
 }
 
 .tech-tag.vlan {
@@ -1110,7 +1111,7 @@ body {
     font-size: 0.8rem;
     font-weight: 500;
     border: 1px solid #e2e8f0;
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'IBM Plex Mono', monospace;
 }
 
 /* Clean and Cold Footer */
@@ -1151,170 +1152,6 @@ body {
     outline: 2px solid #63b3ed;
     outline-offset: 2px;
     border-radius: 2px;
-}
-
-/* Responsividade para Glossário */
-@media (max-width: 768px) {
-    .concepts-grid {
-        grid-template-columns: 1fr;
-        gap: var(--spacing-lg);
-    }
-
-    .concept-card {
-        padding: var(--spacing-lg);
-    }
-
-    .concept-header {
-        flex-direction: column;
-        text-align: center;
-        gap: var(--spacing-sm);
-    }
-
-    .concept-header i {
-        font-size: 2rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .glossary-title {
-        font-size: 1.8rem;
-    }
-
-    .glossary-subtitle {
-        font-size: 1rem;
-    }
-
-    .concept-card {
-        padding: var(--spacing-md);
-    }
-
-    .concept-header h3 {
-        font-size: 1.2rem;
-    }
-}
-
-/* Modal */
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 10000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: var(--bg-overlay);
-    backdrop-filter: blur(5px);
-}
-
-.modal-content {
-    background-color: var(--bg-card);
-    margin: 5% auto;
-    padding: var(--spacing-2xl);
-    border-radius: var(--border-radius-xl);
-    width: 90%;
-    max-width: 800px;
-    max-height: 80vh;
-    overflow-y: auto;
-    box-shadow: var(--shadow-xl);
-    animation: modalFadeIn 0.3s ease-out;
-}
-
-@keyframes modalFadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(-50px) scale(0.95);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
-}
-
-.close {
-    color: var(--text-secondary);
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: color var(--transition-fast);
-}
-
-.close:hover {
-    color: var(--danger-color);
-}
-
-.modal h2 {
-    margin-bottom: var(--spacing-xl);
-    color: var(--text-primary);
-    font-size: 1.8rem;
-}
-
-.info-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: var(--spacing-lg);
-}
-
-.info-card {
-    padding: var(--spacing-lg);
-    border: 1px solid #e9ecef;
-    border-radius: var(--border-radius-md);
-    background: #f8f9fa;
-    transition: transform var(--transition-normal);
-}
-
-.info-card:hover {
-    transform: translateY(-2px);
-}
-
-.info-card h3 {
-    color: var(--primary-color);
-    margin-bottom: var(--spacing-sm);
-    font-size: 1.1rem;
-}
-
-.info-card p {
-    color: var(--text-secondary);
-    font-size: 0.9rem;
-    line-height: 1.5;
-}
-
-/* Footer aprimorado */
-.footer {
-    background: var(--bg-secondary);
-    color: var(--text-light);
-    padding: var(--spacing-2xl) var(--spacing-lg);
-    margin-top: var(--spacing-2xl);
-}
-
-.footer-content {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: var(--spacing-xl);
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.footer-section h3 {
-    color: var(--accent-color);
-    margin-bottom: var(--spacing-md);
-    font-size: 1.1rem;
-}
-
-.footer-section p {
-    color: var(--text-muted);
-    font-size: 0.9rem;
-    line-height: 1.5;
-}
-
-.footer-bottom {
-    text-align: center;
-    margin-top: var(--spacing-xl);
-    padding-top: var(--spacing-xl);
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    color: var(--text-muted);
-    font-size: 0.9rem;
 }
 
 /* Responsividade */
